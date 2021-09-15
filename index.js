@@ -24,18 +24,25 @@ function addMovie(event) {
 
 }
 
-function deleteMovie (event) {
-    event.target.parentNode.remove()
-    message.textContent = 'Movie deleted!'
+function deleteMovie(event) {
+    message.textContent = `${event.target.parentNode.firstChild.textContent} deleted!`;
+    event.target.parentNode.remove();
+    revealMessage();
 }
 
 function crossOffMovie(event) {
     event.target.classList.toggle('checked')
     if (event.target.classList.contains('checked') === true) {
-        message.textContent = 'Movie watched!';
+        message.textContent = `${event.target.textContent} watched!`;
     } else {
-        message.textContent = 'Movie added back';
+        message.textContent = `${event.target.textContent} added back!`;
     }
 
+    revealMessage();
 }
 
+function revealMessage() {
+    setTimeout(function() {
+    message.classList.add('hide')
+    }, 1000);
+}
